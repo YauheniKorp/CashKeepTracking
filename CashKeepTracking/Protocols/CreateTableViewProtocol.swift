@@ -14,7 +14,6 @@ protocol CreateTableViewProtocol: UITableViewDelegate, UITableViewDataSource  {
 
 extension CreateTableViewProtocol{
     func createTableView(_ viewController: UIViewController, _ tableView: UITableView, _ editButton: UIButton) {
-        //let tableView = tableView
         let frame = CGRect(x: 0, y: 50, width: viewController.view.frame.width, height: viewController.view.frame.height)
         tableView.frame = frame
         
@@ -26,7 +25,6 @@ extension CreateTableViewProtocol{
         
         tableView.delegate = self
         tableView.dataSource = self
-        //tableView.setEditing(true, animated: true)
         tableView.register(DetailTableViewCell.self, forCellReuseIdentifier: "DetailCell")
         
         viewController.view.addSubview(editButton)

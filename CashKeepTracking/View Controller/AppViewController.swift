@@ -33,7 +33,6 @@ class AppViewController: UIViewController, CreateCollectionView, UIGestureRecogn
         arrOfItem += self.gettingItemList()
         
         for value in paym {
-            print(value.numberOfItem)
             arrOfItem[value.numberOfItem].payments.append(value)
         }
         
@@ -57,10 +56,7 @@ class AppViewController: UIViewController, CreateCollectionView, UIGestureRecogn
         navigationItem.rightBarButtonItems = [button, detailButton1]
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        createCollectionView(self, collectionVC!, detailButton, view1)
-        
-    }
+    //MARK: - @objc func
     @objc func addButton() {
         
         let alert = UIAlertController(title: "Выберите метод оплаты: \n\n\n\n", message: "Введите имя метода оплаты", preferredStyle: .alert)
@@ -124,23 +120,23 @@ extension AppViewController: UICollectionViewDelegate, UICollectionViewDataSourc
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        var methodOfPayment: MethodOfPayment?
-        
-        switch arrOfItem[indexPath.row].name.contains("rd") {
-        case true:
-            methodOfPayment = .Card
-        case false:
-            methodOfPayment = .Cash
-        }
-        
-        switch indexPath.row {
-        case 0:
-            methodOfPayment = .Card
-        case 1:
-            methodOfPayment = .Cash
-        default:
-            break
-        }
+//        var methodOfPayment: MethodOfPayment?
+//
+//        switch arrOfItem[indexPath.row].name.contains("rd") {
+//        case true:
+//            methodOfPayment = .Card
+//        case false:
+//            methodOfPayment = .Cash
+//        }
+//
+//        switch indexPath.row {
+//        case 0:
+//            methodOfPayment = .Card
+//        case 1:
+//            methodOfPayment = .Cash
+//        default:
+//            break
+//        }
         let alert = UIAlertController(title: "Добавление оплаты", message: "Укажите данные оплаты: \n\n\n\n\n\n\n\n", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         

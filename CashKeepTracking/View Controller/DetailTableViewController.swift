@@ -24,27 +24,6 @@ class DetailTableViewController: UIViewController, CreateTableViewProtocol {
             
         }
         
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "HH:mm E, d MMM" //Your date format
-//        dateFormatter.timeZone = TimeZone(abbreviation: "GMT+0:00") //Current time zone
-//
-//        //according to date format your date string
-//        guard let date = dateFormatter.date(from: allMethods[1].dateOfPayment) else {
-//            fatalError()
-//        }
-//        print(date) //Convert String to Date
-        
-//        var dd = [Date]()
-//        for val in allMethods.indices {
-//            let dateFormatter = DateFormatter()
-//            dateFormatter.dateFormat = "HH:mm E, d MMM" //Your date format
-//            guard let date = dateFormatter.date(from: allMethods[val].dateOfPayment) else {
-//                fatalError()
-//            }
-//            dd.append(date)
-//        }
-//        dd.sort(by: {$0 < $1})
-//        print(dd)
         allMethods.sort (by: { $0.dateOfPayment > $1.dateOfPayment})
         button.addTarget(self, action: #selector(rightBarButtonItemTapped), for: .touchUpInside)
         createTableView(self,tableView, button)
@@ -75,27 +54,17 @@ extension DetailTableViewController: UITableViewDelegate, UITableViewDataSource,
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DetailCell", for: indexPath) as! DetailTableViewCell
         
-        
         guard allMethods.first != nil else {
             return cell
         }
         
-        //cell.setCell(allMethods[indexPath.row], )
         cell.setCell(allMethods[indexPath.row])
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        
-    }
-//    func deleteElement(_ arr: inout [PaymentModel], _ index: Int) -> [PaymentModel]{
-//        arr.remove(at: index)
-//        return arr
-//    }
+
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         let deleteItem = allMethods[indexPath.row]
         print(allMethods[indexPath.row])
-        //var indexOfItemInArr = 0
         
         for value in arrOfItem.indices {
             for val in arrOfItem[value].payments.indices {
@@ -111,28 +80,5 @@ extension DetailTableViewController: UITableViewDelegate, UITableViewDataSource,
                 }
             }
         }
-        
-        
-//        for value in arrOfItem{
-//            var newValue = value
-//            for val in newValue.payments.indices {
-//                print("index is \(val)")
-//                print(newValue.payments[val])
-//                if newValue.payments[val] == deleteItem {
-//
-//                   // print(newValue.payments[val])
-//                    newValue.payments.remove(at: val)
-//                    createTableView(self,tableView, button)
-//
-////                    print(arrOfItem[indexOfItemInArr].payments[val])
-////                    arrOfItem[indexOfItemInArr].payments.remove(at: val)
-//            }
-//
-//        }
-            //indexOfItemInArr += 1
-
-        //        arrOfItem[indexPath.row].payments.remove(at: <#T##Int#>)
-        //tableView.reloadData()
-    //}
     }
 }

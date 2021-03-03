@@ -44,8 +44,6 @@ extension LoginViewControllerInit {
         
         viewController.view.addSubview(loginTextField)
         viewController.view.addSubview(passwordTextField)
-        viewController.view.addSubview(loginButton)
-        
-        
+        viewController.view.addSubview(loginButton)        
     }
 }

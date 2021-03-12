@@ -11,7 +11,9 @@ class ItemCollectionViewCell: UICollectionViewCell {
     
     func setCell(_ item: ItemModel) {
         let cell = ItemView(item)
+        
         addSubview(cell)
+
     }
     
 }

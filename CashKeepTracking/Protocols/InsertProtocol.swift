@@ -106,8 +106,48 @@ extension InsertPaymentModel {
         return payments
     }
     
+    func deleteItem(_ name: String) {
+        let query = "delete from ItemModel where name = '\(name)'"
+        var del: OpaquePointer? = nil
+        
+        guard sqlite3_prepare_v2(DB.db, query, -1, &del, nil) == SQLITE_OK else {
+            let errmsg = String(cString: sqlite3_errmsg(DB.db)!)
+            print("error prepare delete: \(errmsg)")
+            return
+        }
+        
+        guard sqlite3_step(del) == SQLITE_DONE  else {
+            let errmsg = String(cString: sqlite3_errmsg(DB.db)!)
+            print("error delete: \(errmsg)")
+            return
+        }
+        
+        sqlite3_finalize(del)
+        print(query)
+    }
+    
     func deletePaymentList(_ date: String) {
         let query = "delete from PaymentModel where date = '\(date)'"
+        var del: OpaquePointer? = nil
+        
+        guard sqlite3_prepare_v2(DB.db, query, -1, &del, nil) == SQLITE_OK else {
+            let errmsg = String(cString: sqlite3_errmsg(DB.db)!)
+            print("error prepare delete: \(errmsg)")
+            return
+        }
+        
+        guard sqlite3_step(del) == SQLITE_DONE  else {
+            let errmsg = String(cString: sqlite3_errmsg(DB.db)!)
+            print("error delete: \(errmsg)")
+            return
+        }
+        
+        sqlite3_finalize(del)
+        print(query)
+    }
+    
+    func deletePaymentListByItem(_ numberOfItem: Int) {
+        let query = "delete from PaymentModel where numberOfItem = '\(numberOfItem)'"
         var del: OpaquePointer? = nil
         
         guard sqlite3_prepare_v2(DB.db, query, -1, &del, nil) == SQLITE_OK else {

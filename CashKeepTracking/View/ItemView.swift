@@ -7,6 +7,8 @@
 
 import UIKit
 
+
+
 class ItemView: UIView {
     
     @IBOutlet var itemContainer: UIView!
@@ -14,9 +16,11 @@ class ItemView: UIView {
     @IBOutlet weak var doButton: UIButton!
     @IBOutlet weak var sumLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
-    
+   
     init(_ item: ItemModel) {
         super.init(frame: CGRect(x: 0, y: 0, width: 335, height: 150))
+        
+        
         
         Bundle.main.loadNibNamed("Item", owner: self, options: nil)
         addSubview(itemContainer)
@@ -38,10 +42,13 @@ class ItemView: UIView {
         
         sumLabel.text = "\(sum)"
         sumLabel.textColor = .black
+        
         doButton.setBackgroundImage(image, for: .normal)
         doButton.layer.cornerRadius = 10
+        
+       
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

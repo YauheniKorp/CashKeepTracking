@@ -64,12 +64,9 @@ extension DetailTableViewController: UITableViewDelegate, UITableViewDataSource,
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         let deleteItem = allMethods[indexPath.row]
-        print(allMethods[indexPath.row])
         
         for value in arrOfItem.indices {
             for val in arrOfItem[value].payments.indices {
-                print("value is \(value) val is \(val)")
-                //print(arrOfItem[value].payments[val])
                 if arrOfItem[value].payments[val] == deleteItem {
                     arrOfItem[value].payments.remove(at: val)
                     allMethods.remove(at: indexPath.row)
